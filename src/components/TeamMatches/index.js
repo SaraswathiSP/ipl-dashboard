@@ -22,10 +22,6 @@ const TeamMatches = props => {
     matchStatus: data.match_status,
   })
 
-  useEffect(() => {
-    getTeamMatchDetails()
-  }, [])
-
   const getTeamMatchDetails = async () => {
     const {match} = props
     const {params} = match
@@ -41,6 +37,10 @@ const TeamMatches = props => {
     setlatestMatch(formattedData)
     setIsLoading(false)
   }
+
+  useEffect(() => {
+    getTeamMatchDetails()
+  }, [])
 
   const getClassName = () => {
     const {match} = props
@@ -94,7 +94,7 @@ const TeamMatches = props => {
   return (
     <div className={`team-matches-container ${getClassName()}`}>
       {isLoading ? (
-        <div data-testid="loader">
+        <div testid="loader">
           <Loader type="Oval" color="#ffffff" height={50} width={50} />
         </div>
       ) : (
